@@ -44,10 +44,17 @@ function sumNumbers(numbers) {
 const mixedArr = [6, 12, "miami", 1, true, "barca", "200", "lisboa", 8, 10];
 
 // should return: 57
-function sum(mixedArr) {
-  if (!mixedArr.length) {
-    return 0;
-  }
+function sum(values) {
+  let total = 0;
+  values.forEach(function (value) {
+    if (typeof value == "string") total += value.length;
+    else if (typeof value == "number")
+      total += value; //if its boolean and also true
+    else if (typeof value == "boolean" && value) total += 1;
+    else if (typeof value == "boolean") total += 0;
+    else throw new Error("Unsupported data type sir or ma'am");
+  });
+  return total;
 }
 
 // Iteration #4: Calculate the average
